@@ -2,6 +2,7 @@ import icon01 from "../../assets/icon01.png"
 import icon02 from "../../assets/icon02.png"
 import icon03 from "../../assets/icon03.png"
 import elementoDaPage02 from "../../assets/elementoDaPage02.png"
+import "./style.css";
 
 const Body = () => {
   return (
