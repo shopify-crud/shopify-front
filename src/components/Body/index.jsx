@@ -1,10 +1,15 @@
+import icon01 from "../../assets/icon01.png"
+import icon02 from "../../assets/icon02.png"
+import icon03 from "../../assets/icon03.png"
+import elementoDaPage02 from "../../assets/elementoDaPage02.png"
+
 const Body = () => {
   return (
     <>
       <section className="body">
         <div className="divBoxPai">
           <div className="divBoxFilho1">
-            <img className="icon" src="./assets/icon01.png" alt="Icon 1" />
+            <img className="icon" src={icon01} alt="Icon 1" />
             <p className="p3">Lorem, ipsum ola.</p>
             <p className="p4">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat,
@@ -12,7 +17,7 @@ const Body = () => {
             </p>
           </div>
           <div className="divBoxFilho2">
-            <img className="icon" src="./assets/icon02.png" alt="Icon 2" />
+            <img className="icon" src={icon02} alt="Icon 2" />
             <p className="p3">Lorem, ipsum.</p>
             <p className="p4">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat,
@@ -20,7 +25,7 @@ const Body = () => {
             </p>
           </div>
           <div className="divBoxFilho3">
-            <img className="icon" src="./assets/icon03.png" alt="Icon 3" />
+            <img className="icon" src={icon03} alt="Icon 3" />
             <p className="p3">Lorem, ipsum.</p>
             <p className="p4">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat,
@@ -29,7 +34,7 @@ const Body = () => {
           </div>
         </div>
         <div>
-          <img className="img3" src="./assets/elementoDaPage02.png" alt="Elemento" />
+          <img className="img3" src={elementoDaPage02} alt="Elemento" />
         </div>
 
         <div className="lastDiv">

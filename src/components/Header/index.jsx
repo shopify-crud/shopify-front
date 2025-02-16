@@ -1,4 +1,5 @@
-
+import logo from "../../assets/logo.png"
+import elementoDaPage01 from "../../assets/logo.png"
 
 const Header = () => {
   return (
@@ -24,7 +25,7 @@ const Header = () => {
           ></path>
         </svg>
         <div className="logo">
-          <img className="img1" src="./assets/logo.png" alt="Logo" />
+          <img className="img1" src={logo} alt="Logo" />
         </div>
         <div>
           <div className="title1">
@@ -45,7 +46,7 @@ const Header = () => {
           </div>
         </div>
         <div>
-          <img className="img2" src="./assets/elementoDaPage01.png" alt="Elemento" />
+          <img className="img2" src={elementoDaPage01} alt="Elemento" />
         </div>
       </section>
     </>
