@@ -5,7 +5,7 @@ const Body = () => {
         <div className="divBoxPai">
           <div className="divBoxFilho1">
             <img className="icon" src="./assets/icon01.png" alt="Icon 1" />
-            <p className="p3">Lorem, ipsum.</p>
+            <p className="p3">Lorem, ipsum ola.</p>
             <p className="p4">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat,
               quos.
