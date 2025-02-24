@@ -19,7 +19,6 @@ const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
 
-  // Pega o email da URL, se presente
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const emailParam = params.get("email");
@@ -32,7 +31,7 @@ const SignUpPage = () => {
     setLoading(true);
     let request = {
       nome: name,
-      cpf: cpf,
+      cpf: formatarCPF(usuario.cpf),
       telefone: phoneNumber,
       email: email,
       password: password,
@@ -40,7 +39,7 @@ const SignUpPage = () => {
 
     try {
       const response = await cadastrarUsuario(request);
-      const userId = response.data.id; 
+      const userId = response.data.id;
       toast.success("Data registered with success!");
       setTimeout(() => navigate(`/${userId}`), 2000);
     } catch (error) {

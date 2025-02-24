@@ -17,7 +17,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Pega o email da URL, se presente
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const emailParam = params.get("email");
@@ -30,10 +29,10 @@ const LoginPage = () => {
     setLoading(true);
     try {
       const response = await loginUsuario(email, password);
-      const userId = response.data.id; // Supondo que o ID esteja na resposta da API
+      const userId = response.data.id;
       toast("Welcome to our site!");
       setUserName(response.data.nome);
-      setTimeout(() => navigate(`/${userId}`), 2000); // Passando o ID na URL
+      setTimeout(() => navigate(`/${userId}`), 2000); 
     } catch (error) {
       toast.error("Error: Invalid email or password");
       console.error(error);
@@ -62,7 +61,7 @@ const LoginPage = () => {
             type="email"
             placeholder="Enter your email address"
             onChange={(e) => setEmail(e.target.value)}
-            value={email} // Preenche o email automaticamente
+            value={email}
           />
           <div className="inputPassword">
             <input

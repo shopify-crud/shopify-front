@@ -1,18 +1,38 @@
+import { Avatar, Tooltip } from "antd";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import logo from "../../assets/logo.png";
-import elementoDaPage01 from "../../assets/elementoDaPage01.png";
-import "./style.css";
 import { toast } from "react-toastify";
-import { Avatar } from "antd";
+import elementoDaPage01 from "../../assets/elementoDaPage01.png";
+import logo from "../../assets/logo.png";
+import "./style.css";
 import { getUsuarioById } from "../../services/requestUser";
 
 const Header = () => {
-  const { id } = useParams();
-  const [email, setEmail] = useState(""); // Email do input no header
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const { id } = useParams();
   const [userName, setUserName] = useState("");
 
+  useEffect(() => {
+    console.log("ID recebido da URL:", id);
+
+    const getDataUser = async () => {
+      try {
+        if (!id) return;
+
+        const userData = await getUsuarioById(id);
+        console.log("Dados do usuário:", userData);
+        if (userData?.data.nome) {
+          setUserName(userData.data.nome);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar dados do usuário:", error);
+      }
+    };
+
+    getDataUser();
+  }, [id]);
+  
   const handleStartFreeTrial = () => {
     if (email) {
       navigate(`/login?email=${email}`);
@@ -21,24 +41,15 @@ const Header = () => {
     }
   };
 
-  useEffect(() => {
-    const getDataUser = async () => {
-      try {
-        const userData = await getUsuarioById(id); // Chama a função com o id
-        setUserName(userData.nome);
-      } catch (error) {
-        console.error("Failed to fetch user data", error);
-      }
-    };
-
-    if (id) {
-      getDataUser();
-    }
-  }, [id]);
-
   const getInitials = (name) => {
-    const nameParts = name.split(" ");
-    return nameParts.map((part) => part.charAt(0).toUpperCase()).join("");
+    if (!name) return "?";
+    return name
+      .trim()
+      .split(" ")
+      .filter((n) => n)
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase();
   };
 
   return (
@@ -48,7 +59,16 @@ const Header = () => {
           <Link to="/">
             <img className="img1" src={logo} alt="Logo" />
           </Link>
-          <Avatar>{userName ? getInitials(userName) : "?"}</Avatar>
+          {id ? (
+            <div className="avatarContainer">
+              <Tooltip title={userName}>
+                <Avatar>{userName ? getInitials(userName) : "?"}</Avatar>
+              </Tooltip>
+              <p>Welcome, {userName}!</p>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         <h1 className="title1">Sell online with Shopify</h1>
@@ -59,7 +79,7 @@ const Header = () => {
             type="email"
             placeholder="Enter your email address"
             value={email}
-            onChange={(e) => setEmail(e.target.value)} // Atualiza o estado do email
+            onChange={(e) => setEmail(e.target.value)}
           />
           <button className="button1" onClick={handleStartFreeTrial}>
             Start free trial

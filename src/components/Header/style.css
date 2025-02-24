@@ -31,6 +31,16 @@
     margin-bottom: 1rem;
 }
 
+.avatarContainer {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    width: 12rem;
+    justify-content: space-between;
+}
+
 .img1 {
     height: 3rem;
 }
@@ -65,12 +75,13 @@ input {
 }
 
 .button1 {
-    width: 60%;
+    width: 12rem;
     height: 3rem;
     font-size: 1rem;
     color: white;
     background-color: #212326;
     border: none;
+    padding: 12px 24px;
     border-radius: 5px;
     cursor: pointer;
 }
